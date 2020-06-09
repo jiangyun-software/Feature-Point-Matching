@@ -1,57 +1,19 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
 
 
-pip install -U pip
-
-
-# In[ ]:
-
-
-get_ipython().system('wget https://bootstrap.pypa.io/get-pip.py')
-
-
-# In[ ]:
-
-
-get_ipython().system('sudo python3.6 get-pip.py')
-
-
-# In[ ]:
-
-
-get_ipython().system('pip install python==3.6.4')
-
-
-# In[ ]:
-
-
-get_ipython().system('jupyter kernelspec list')
-
-
-# In[1]:
-
-
-get_ipython().system('pip install opencv-python==3.4.1.15 opencv-contrib==3.4.1.15')
-
-
-# In[2]:
-
-
+# upgrade pip and python
+#pip install -U pip
+#get_ipython().system('wget https://bootstrap.pypa.io/get-pip.py')
+#get_ipython().system('sudo python3.6 get-pip.py')
+#get_ipython().system('pip install python==3.6.4')
+#get_ipython().system('jupyter kernelspec list')
+#get_ipython().system('pip install opencv-python==3.4.1.15 opencv-contrib==3.4.1.15')
+#get_ipython().system('pip install opencv-python==3.4.2.17 opencv-contrib-python==3.4.2.17')
 get_ipython().system('pip install opencv-python==3.4.2.17 opencv-contrib-python==3.4.2.17')
 
-
-# In[1]:
-
-
-get_ipython().system('pip install opencv-python==3.4.2.17 opencv-contrib-python==3.4.2.17')
-
-
-# In[105]:
-
-
+# install packages
 import numpy as np
 import cv2
 from matplotlib import pyplot as plt
@@ -59,15 +21,7 @@ import os
 import glob
 import shutil
 
-
-# In[106]:
-
-
 print(os.path.abspath('.'))
-
-
-# In[107]:
-
 
 MIN_MATCH_COUNT = 10
 save_path = "/tf/算法组/SamplePic/results"
@@ -139,22 +93,4 @@ for filename in glob.glob("/tf/算法组/SamplePic/*.png"):
 
 for result_file in glob.glob("/tf/算法组/SamplePic/*.pngresult.png"): # move the result images to the "results" folder
     shutil.move(result_file,save_path)
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
+  
