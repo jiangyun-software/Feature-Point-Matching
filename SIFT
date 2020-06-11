@@ -7,13 +7,14 @@ import glob
 import shutil
 
 
-MIN_MATCH_COUNT = 10
-save_path = "/tf/算法组/SamplePic/results"
-img1 = cv2.imread('right.png',0)
-for filename in glob.glob("/tf/算法组/SamplePic/*.png"):
+MIN_MATCH_COUNT = 5
+Count_num = 0
+save_path = "/tf/算法组/detect_images/BT0981优化图片/6H/6H_Results_New"
+img1 = cv2.imread('right_6H.png',0)
+for filename in glob.glob("/tf/算法组/detect_images/BT0981优化图片/6H/*.png"):
     print(filename)
     img2 = cv2.imread(filename,0)
-    
+    Count_num = Count_num+1
     # 使用SIFT检测角点
     sift = cv2.xfeatures2d.SIFT_create()
     #sift=cv2.SIFT()
@@ -58,7 +59,7 @@ for filename in glob.glob("/tf/算法组/SamplePic/*.png"):
         img2 = cv2.polylines(img2,[np.int32(dst)],True,(255,0,0),3, cv2.LINE_AA)
 
     else:
-        print("Not enough matches are found - %d/%d") % (len(good),MIN_MATCH_COUNT)
+        print("Not enough matches are found - %d/%d" % (len(good),MIN_MATCH_COUNT))
         matchesMask = None
 
     # 显示匹配结果
@@ -67,7 +68,7 @@ for filename in glob.glob("/tf/算法组/SamplePic/*.png"):
                        matchesMask = matchesMask, # draw only inliers
                        flags = 2)
     img3 = cv2.drawMatches(img1,kp1,img2,kp2,good,None,**draw_params)
-    
+    print('Img Count_num = %d' % Count_num)
     plt.imshow(img3)
     plt.show()
     # "cv2.imshow" may lead to a Kernel crash so we change it to the 'plt' handle to check the image
@@ -75,5 +76,5 @@ for filename in glob.glob("/tf/算法组/SamplePic/*.png"):
     #cv2.waitKey(0)
     cv2.imwrite(os.path.join(save_path, filename+'result.png'), img3)
 
-for result_file in glob.glob("/tf/算法组/SamplePic/*.pngresult.png"): # move the result images to the "results" folder
+for result_file in glob.glob("/tf/算法组/detect_images/BT0981优化图片/6H/*.pngresult.png"): # move the result images to the "results" folder
     shutil.move(result_file,save_path)
